@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/keyboard.css">
+    <link rel="stylesheet" href="./assets/css/numbers.css">
+    <link rel="stylesheet" href="./assets/css/buttons.css">
+    <title>Timer</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Timer</h1>
+    </header>
+    <main class="main">
+        <section class="numbers-container">
+            <div class="numbers">
+                <div class="hours number-container">
+                    <h1 id="hours">00</h1>
+                </div>
+                <div class="minutes number-container">
+                    <h1 id="minutes">00</h1>
+                </div>
+                <div class="seconds number-container">
+                    <h1 id="seconds">00</h1>
+                </div>
+            </div>
+        </section>
+        <section class="keyboard-container">
+            <div class="keyboard">
+                <div class="keyboard-button-container">
+                    <button id="oneButton" class="keyboard-button">1</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="twoButton" class="keyboard-button">2</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="threeButton" class="keyboard-button">3</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="fourButton" class="keyboard-button">4</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="fiveButton" class="keyboard-button">5</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="sixButton" class="keyboard-button">6</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="sevenButton" class="keyboard-button">7</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="eightButton" class="keyboard-button">8</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="nineButton" class="keyboard-button">9</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="zeroButton" class="keyboard-button">0</button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="enterButton" class="keyboard-button enter">
+                        <img class="enter-button-image" src="./assets/icons/enter.png" alt="Enter">
+                    </button>
+                </div>
+                <div class="keyboard-button-container">
+                    <button id="backButton" class="keyboard-button backspace">
+                        <img class="backspace-button-image" src="./assets/icons/backspace.png" alt="Enter">
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section id="buttonsContainer" class="buttons-container">
+            <div class="buttons start-button">
+                <button id="startButton" class="btn">
+                    Start
+                </button>
+            </div>
+        </section>
+        <section id="otherButtonsContainer" class="other-buttons-container">
+            <div class="buttons pause-button ">
+                <button id="pauseButton" class="btn">
+                    <img src="./assets/icons/pause.png" alt="">
+                </button>
+            </div>
+            <div class="buttons stop-button">
+                <button id="stopButton" class="btn">
+                    <img src="./assets/icons/stop.png" alt="">
+                </button>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div>
+            <h3>
+                <i>Contact: <span>felixreyna48@gmail.com</span> </i>
+            </h3>
+        </div>
+    </footer>
+    <script type="application/javascript" src="./src/timer.js"></script>
+    <script type="application/javascript" src="./src/index.js"></script>
+</body>
+</html>

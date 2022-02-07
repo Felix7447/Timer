@@ -1,0 +1,17 @@
+{
+  "name": "timer",
+  "version": "1.0.0",
+  "description": "This timer is one of my first projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "timer"
+  },
+  "keywords": [
+    "timer",
+    "javaScript",
+    "HTML",
+    "CSS"
+  ],
+  "author": "Felix Reyna",
+  "license": "MIT"
+}
