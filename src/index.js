@@ -1,3 +1,7 @@
+import Printer from "./printer.js";
+
+const printer = new Printer();
+
 // Elements from dom=========================================
 // Numbers
 var hours = document.getElementById('hours');
@@ -35,140 +39,63 @@ var myString = '000000';
 let myTimeInNumbers = [];
 let currentTime;
 let timer;
-
+let keyboardButtons = [oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, 
+    eightButton, nineButton, zeroButton, enterButton, backButton];
 
 //=============================================================
 
-// Key codes from keyboard
-const KEYS = {
-    zero: 96,
-    one: 97,
-    two: 98,
-    three: 99,
-    four: 100,
-    five: 101,
-    six: 102,
-    seven: 103,
-    eight: 104,
-    nine: 105,
-    enter: 13,
-    back: 8
-}
-
 
 // Event Listeners=============================
-addEventListener('keydown', type);
-oneButton.addEventListener('click', clicked); 
-twoButton.addEventListener('click', clicked); 
-threeButton.addEventListener('click', clicked); 
-fourButton.addEventListener('click', clicked); 
-fiveButton.addEventListener('click', clicked); 
-sixButton.addEventListener('click', clicked); 
-sevenButton.addEventListener('click', clicked); 
-eightButton.addEventListener('click', clicked); 
-nineButton.addEventListener('click', clicked); 
-zeroButton.addEventListener('click', clicked); 
-backButton.addEventListener('click', clicked); 
-enterButton.addEventListener('click', start); 
-startButton.addEventListener('click', start);
+
+keyboardButtons.forEach(button => {
+    button.addEventListener('click', clicked);
+});
+startButton.addEventListener('click', start); 
 pauseButton.addEventListener('click', pause); 
 stopButton.addEventListener('click', stop);  
 
 // Functions=======================================
 
-function type() {
-    switch(event.keyCode) {
-        case KEYS.zero:
-            myTime('0');
-            break;
-
-        case KEYS.one:
-            myTime('1');
-            break;
-
-        case KEYS.two:
-            myTime('2');
-            break;
-
-        case KEYS.three:
-            myTime('3');
-            break;
-
-        case KEYS.four:
-            myTime('4');
-            break;
-
-        case KEYS.five:
-            myTime('5');
-            break;
-
-        case KEYS.six:
-            myTime('6');
-            break;
-
-        case KEYS.seven:
-            myTime('7');
-            break;
-
-        case KEYS.eight:
-            myTime('8');
-            break;
-
-        case KEYS.nine:
-            myTime('9');
-            break;
-
-        case KEYS.enter:
-            start();
-            break;
-
-        case KEYS.back:
-            myTime('back');
-            break;
-    }
-}
-
 function clicked() {
-    
     switch(this.id) {
         case 'zeroButton':
-            myTime('0');
+            printer.add('0');
             break;
 
         case 'oneButton':
-            myTime('1');
+            printer.add('1');
             break;
 
         case 'twoButton':
-            myTime('2');
+            printer.add('2');
             break;
 
         case 'threeButton':
-            myTime('3');
+            printer.add('3');
             break;
 
         case 'fourButton':
-            myTime('4');
+            printer.add('4');
             break;
 
         case 'fiveButton':
-            myTime('5');
+            printer.add('5');
             break;
 
         case 'sixButton':
-            myTime('6');
+            printer.add('6');
             break;
 
         case 'sevenButton':
-            myTime('7');
+            printer.add('7');
             break;
 
         case 'eightButton':
-            myTime('8');
+            printer.add('8');
             break;
 
         case 'nineButton':
-            myTime('9');
+            printer.add('9');
             break;
 
         case 'enterButton':
@@ -176,42 +103,10 @@ function clicked() {
             break;
 
         case 'backButton':
-            myTime('back');
+            printer.add('back');
             break;
     }
 }
-
-
-function myTime(num) {
-    
-    if (num === 'back') {
-        myString = myString.slice(0, myString.length - 1);
-        myString = '0' + myString;
-        // console.log(myString);
-    } else {
-        myString += num;
-        myString = myString.slice(1)
-        // console.log(myString);
-    }
-
-    addToArr(values, myString);
-    write(values);
-}
-
-function addToArr(arr, str) {
-    arr[arr.length - 1] = `${str[str.length - 6]}${str[str.length - 5]}`;
-    arr[arr.length - 2] = `${str[str.length - 4]}${str[str.length - 3]}`;
-    arr[arr.length - 3] = `${str[str.length - 2]}${str[str.length - 1]}`;
-    // console.log(str[str.length - 1]);
-}
-
-function write(arr) {
-    // console.log(arr);
-    hours.innerHTML = arr[arr.length - 1];
-    minutes.innerHTML = arr[arr.length - 2];
-    seconds.innerHTML = arr[arr.length - 3];
-}
-
 
 function start() {
     if(check(values)) {
@@ -223,7 +118,6 @@ function start() {
         timer = new Timer(myTimeInNumbers, [hours, minutes, seconds], [buttonsContainer, otherButtonsContainer], pauseButton);
         timer.start();
     }
-    
 }
 
 function pause() {
