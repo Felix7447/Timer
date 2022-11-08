@@ -3,10 +3,6 @@ import Printer from "./printer.js";
 const printer = new Printer();
 
 // Elements from dom=========================================
-// Numbers
-var hours = document.getElementById('hours');
-var minutes = document.getElementById('minutes');
-var seconds = document.getElementById('seconds');
 
 // Keyboard
 var oneButton = document.getElementById('oneButton');
@@ -33,14 +29,28 @@ var stopButton = document.getElementById('stopButton');
 
 
 // Variables    ===============================================
-var values = new Array();
-values = ['00', '00', '00'];
+let values = ['00', '00', '00'];
 var myString = '000000';
 let myTimeInNumbers = [];
 let currentTime;
 let timer;
 let keyboardButtons = [oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, 
     eightButton, nineButton, zeroButton, enterButton, backButton];
+
+const KEYBOARD_FUNCTIONS = {
+    zeroButton: () => printer.add('0'),
+    oneButton: () => printer.add('1'),
+    twoButton: () => printer.add('2'),
+    threeButton: () => printer.add('3'),
+    fourButton: () => printer.add('4'),
+    fiveButton: () => printer.add('5'),
+    sixButton: () => printer.add('6'),
+    sevenButton: () => printer.add('7'),
+    eightButton: () => printer.add('8'),
+    nineButton: () => printer.add('9'),
+    backButton: () => printer.add('back'),
+    enterButton: () => start(),
+}
 
 //=============================================================
 
@@ -56,60 +66,13 @@ stopButton.addEventListener('click', stop);
 
 // Functions=======================================
 
-function clicked() {
-    switch(this.id) {
-        case 'zeroButton':
-            printer.add('0');
-            break;
-
-        case 'oneButton':
-            printer.add('1');
-            break;
-
-        case 'twoButton':
-            printer.add('2');
-            break;
-
-        case 'threeButton':
-            printer.add('3');
-            break;
-
-        case 'fourButton':
-            printer.add('4');
-            break;
-
-        case 'fiveButton':
-            printer.add('5');
-            break;
-
-        case 'sixButton':
-            printer.add('6');
-            break;
-
-        case 'sevenButton':
-            printer.add('7');
-            break;
-
-        case 'eightButton':
-            printer.add('8');
-            break;
-
-        case 'nineButton':
-            printer.add('9');
-            break;
-
-        case 'enterButton':
-            start();
-            break;
-
-        case 'backButton':
-            printer.add('back');
-            break;
-    }
+function clicked () {
+    values = KEYBOARD_FUNCTIONS[this.id]();
 }
 
 function start() {
-    if(check(values)) {
+    if(printer.check(values)) {
+        console.log('hi');
         return
     } else {
         buttonsContainer.style.display = "none";
@@ -131,29 +94,6 @@ function stop() {
     addToArr(values, myString);
     buttonsContainer.style.display = "flex";
     otherButtonsContainer.style.display = "none";
-}
-
-function check(arr) {
-    if(parseInt(arr[arr.length - 3]) > 59) {
-        alert('Error: Segs cannot be greater than 59');
-        return true
-    }
-
-    if(parseInt(arr[arr.length - 2]) > 59) {
-        alert('Error: Mins cannot be greater than 59');
-        return true
-    }
-
-    if(parseInt(arr[arr.length - 1]) > 99) {
-        alert('Error: Hours cannot be greater than 99');
-        return true
-    }
-
-    if(parseInt(arr[arr.length - 1]) == 0 && arr[arr.length - 2] == 0 && parseInt(arr[arr.length - 3]) == 0) {
-        alert('Cannot start from 0!');
-        return true
-    }
-
 }
 
 function defaultValues(arr) {
