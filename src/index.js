@@ -1,8 +1,14 @@
 import Printer from "./printer.js";
 
 const printer = new Printer();
+const timer = new Timer();
 
 // Elements from dom=========================================
+
+// Fields
+let hours = document.getElementById('hours');
+let minutes = document.getElementById('minutes');
+let seconds = document.getElementById('seconds');
 
 // Keyboard
 var oneButton = document.getElementById('oneButton');
@@ -30,10 +36,8 @@ var stopButton = document.getElementById('stopButton');
 
 // Variables    ===============================================
 let values = ['00', '00', '00'];
-var myString = '000000';
-let myTimeInNumbers = [];
-let currentTime;
-let timer;
+let timeInterval = 1000;
+let interval;
 let keyboardButtons = [oneButton, twoButton, threeButton, fourButton, fiveButton, sixButton, sevenButton, 
     eightButton, nineButton, zeroButton, enterButton, backButton];
 
@@ -71,40 +75,56 @@ function clicked () {
 }
 
 function start() {
+    values = [hours.value, minutes.value, seconds.value];
     if(printer.check(values)) {
-        console.log('hi');
         return
     } else {
+        toggleButtons(true);
+        timer.start(values);
+        interval = setInterval(() => {
+            if (timer.hasStoped()) {
+                stop()
+            } else {
+                timer.continue();
+                const currentTime = numberToString([timer.seconds, timer.minutes, timer.hours]);
+                printer.print(currentTime);
+            }
+        }, timeInterval)
+    }
+}
+
+function numberToString(time) {
+    const newTime = time.map(element => (
+        (element < 10) ? 
+            element = `0${element.toString()}` 
+            : element = element.toString()
+        )
+    )
+    return newTime;
+}
+
+function toggleButtons(isStarted) {
+    if (isStarted) {
         buttonsContainer.style.display = "none";
         otherButtonsContainer.style.display = "flex";
-        myTimeInNumbers = [parseInt(values[values.length - 1]), parseInt(values[values.length - 2]), parseInt(values[values.length - 3])];
-        timer = new Timer(myTimeInNumbers, [hours, minutes, seconds], [buttonsContainer, otherButtonsContainer], pauseButton);
-        timer.start();
+    } else {
+        buttonsContainer.style.display = "flex";
+        otherButtonsContainer.style.display = "none";
     }
 }
 
 function pause() {
-    myString = timer.hours + timer.minutes + timer.seconds;
-    addToArr(values, myString)
-    timer.pause();
+    clearInterval(interval);
+    toggleButtons(false);
 }
 
 function stop() {
-    timer.stop();
-    addToArr(values, myString);
-    buttonsContainer.style.display = "flex";
-    otherButtonsContainer.style.display = "none";
+    toggleButtons(false);
+    clearInterval(interval);
+    values = ['00', '00', '00'];
+    printer.print(values);
+    printer.defaultValues();
 }
-
-function defaultValues(arr) {
-    arr.forEach(element => {
-        element = '00';
-    })
-}
-
-// =======================================
-
-// OOP=======================================
 
 
 

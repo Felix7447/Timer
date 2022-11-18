@@ -49,6 +49,12 @@ export default class Printer {
         arr[arr.length - 3] = `${str[str.length - 2]}${str[str.length - 1]}`;
     }
 
+    numberToString(time) {
+        time.forEach(element => {
+            console.log(element.toString());
+        })
+    }
+
     print(time) {
         this.seconds.value = time[0];
         this.minutes.value = time[1];
@@ -58,7 +64,7 @@ export default class Printer {
     check(values) {
         const bigNumberError = this.isBigNumber(values);
         const allZeroError = this.isAllZero(values);
-        
+
         return bigNumberError || allZeroError;
     }
 
@@ -83,5 +89,10 @@ export default class Printer {
             alert('Cannot start from zero');
         }
         return zeroError;
+    }
+
+    defaultValues() {
+        this.timeString = '000000';
+        this.time = ['00', '00', '00'];
     }
 }
