@@ -93,12 +93,17 @@
     width: 30px;
 }
 
-@media (max-width: 820px) {
+/* @media (min-width: 820px) {
     .buttons-container {
-        width: 80%;
+        width: 60%;
+        height: 10%;
+    }
+
+    .start-button {
+        width: 60%;
     }
 
     .other-buttons-container {
-        width: 80%;
+        width: 60%;
     }
-}
+} */

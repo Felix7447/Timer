@@ -1,4 +1,5 @@
-import Printer from "./printer.js";
+import Printer from './classes/printer.js';
+import Timer from './classes/timer.js';
 
 const printer = new Printer();
 const timer = new Timer();
@@ -11,25 +12,25 @@ let minutes = document.getElementById('minutes');
 let seconds = document.getElementById('seconds');
 
 // Keyboard
-var oneButton = document.getElementById('oneButton');
-var twoButton = document.getElementById('twoButton');
-var threeButton = document.getElementById('threeButton');
-var fourButton = document.getElementById('fourButton');
-var fiveButton = document.getElementById('fiveButton');
-var sixButton = document.getElementById('sixButton');
-var sevenButton = document.getElementById('sevenButton');
-var eightButton = document.getElementById('eightButton');
-var nineButton = document.getElementById('nineButton');
-var zeroButton = document.getElementById('zeroButton');
-var enterButton = document.getElementById('enterButton');
-var backButton = document.getElementById('backButton');
+let oneButton = document.getElementById('oneButton');
+let twoButton = document.getElementById('twoButton');
+let threeButton = document.getElementById('threeButton');
+let fourButton = document.getElementById('fourButton');
+let fiveButton = document.getElementById('fiveButton');
+let sixButton = document.getElementById('sixButton');
+let sevenButton = document.getElementById('sevenButton');
+let eightButton = document.getElementById('eightButton');
+let nineButton = document.getElementById('nineButton');
+let zeroButton = document.getElementById('zeroButton');
+let enterButton = document.getElementById('enterButton');
+let backButton = document.getElementById('backButton');
 
 // Other buttons
-var buttonsContainer = document.getElementById('buttonsContainer');
-var startButton = document.getElementById('startButton');
-var otherButtonsContainer = document.getElementById('otherButtonsContainer');
-var pauseButton = document.getElementById('pauseButton');
-var stopButton = document.getElementById('stopButton');
+let buttonsContainer = document.getElementById('buttonsContainer');
+let startButton = document.getElementById('startButton');
+let otherButtonsContainer = document.getElementById('otherButtonsContainer');
+let pauseButton = document.getElementById('pauseButton');
+let stopButton = document.getElementById('stopButton');
 
 //=============================================================
 
@@ -125,6 +126,3 @@ function stop() {
     printer.print(values);
     printer.defaultValues();
 }
-
-
-

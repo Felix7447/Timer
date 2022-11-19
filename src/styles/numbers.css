@@ -35,8 +35,11 @@
     -webkit-appearance: none;
   }
 
-@media (max-width: 820px) {
-    .number {
-        width: 80%;
+/* @media (min-width: 820px) {
+    .numbers-container {
+        width: 60%;
+        height: 25%;
     }
-}
+
+    .number {}
+} */
