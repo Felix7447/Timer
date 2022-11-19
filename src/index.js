@@ -1,3 +1,10 @@
+// Styles
+import '@styles/index.css';
+import '@styles/buttons.css';
+import '@styles/keyboard.css';
+import '@styles/numbers.css';
+
+// Creating classes
 import Printer from './classes/printer.js';
 import Timer from './classes/timer.js';
 
