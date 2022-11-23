@@ -18,7 +18,8 @@ module.exports = {
         alias: {
             '@styles': path.resolve(__dirname, 'src/styles/'),
             '@classes': path.resolve(__dirname, 'src/classes/'),
-            '@assets': path.resolve(__dirname, 'src/assets/')
+            '@assets': path.resolve(__dirname, 'src/assets/'),
+            '@fonts': path.resolve(__dirname, 'src/assets/fonts'),
         }
     },
     module: {

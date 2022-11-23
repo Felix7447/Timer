@@ -115,9 +115,13 @@ function toggleButtons(isStarted) {
     if (isStarted) {
         buttonsContainer.style.display = "none";
         otherButtonsContainer.style.display = "flex";
+        enterButton.disabled = true;
+        backButton.disabled = true;
     } else {
         buttonsContainer.style.display = "flex";
         otherButtonsContainer.style.display = "none";
+        enterButton.disabled = false;
+        backButton.disabled = false;
     }
 }
 

@@ -153,6 +153,7 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+### Assets ###
 src/assets/icons/*.png
 src/assets/images/*.png
 

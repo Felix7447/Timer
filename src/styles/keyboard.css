@@ -55,9 +55,3 @@
 .backspace:hover .backspace-button-image{
     width: 28px;
 }
-
-/* @media (min-width: 820px) {
-    .keyboard-container {
-        display: none;
-    }
-} */
