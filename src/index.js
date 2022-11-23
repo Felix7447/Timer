@@ -10,6 +10,7 @@ import Timer from './classes/timer.js';
 
 const printer = new Printer();
 const timer = new Timer();
+const beep = new Audio('./assets/audio/beep.mp3');
 
 // Elements from dom=========================================
 
@@ -136,4 +137,9 @@ function stop() {
     values = ['00', '00', '00'];
     printer.print(values);
     printer.defaultValues();
+    playAudio(beep);
+}
+
+function playAudio(audio) {
+    audio.play();
 }

@@ -22,6 +22,7 @@ module.exports = {
             '@classes': path.resolve(__dirname, 'src/classes/'),
             '@assets': path.resolve(__dirname, 'src/assets/'),
             '@fonts': path.resolve(__dirname, 'src/assets/fonts'),
+            '@audio': path.resolve(__dirname, 'src/assets/audio'),
         }
     },
     module: {
@@ -44,7 +45,6 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    // MiniCssExtractPlugin.loader,
                 ]
             },
             {
@@ -85,6 +85,10 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, "src", "assets/icons"),
                     to: "assets/icons"
+                },
+                {
+                    from: path.resolve(__dirname, "src", "assets/audio"),
+                    to: "assets/audio"
                 },
             ]
         }),
