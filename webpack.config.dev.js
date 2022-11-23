@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
 
@@ -43,7 +43,11 @@ module.exports = {
                     'css-loader',
                     // MiniCssExtractPlugin.loader,
                 ]
-            }
+            },
+            {
+                test: /\.(png|svg)/,
+                type: 'asset/resource'
+            },
         ]
     },
     plugins: [
@@ -55,6 +59,24 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: './[name].css'
         }),
-        new CleanWebpackPlugin(),
-    ]
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "src", "assets/images"),
+                    to: "assets/images"
+                },
+                {
+                    from: path.resolve(__dirname, "src", "assets/icons"),
+                    to: "assets/icons"
+                },
+            ]
+        }),
+    ], 
+    devServer: {
+        static: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 8080,
+        open: true,
+        historyApiFallback: true,
+    }
 }

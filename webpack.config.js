@@ -1,7 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
 
@@ -43,6 +45,23 @@ module.exports = {
                     'css-loader',
                     // MiniCssExtractPlugin.loader,
                 ]
+            },
+            {
+                test: /\.(png|svg)/,
+                type: 'asset/resource'
+            },
+            {
+                test: /\.(woff|woff2)$/,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 10000,
+                        mimetype: "application/font-woff",
+                        name: "[name].[contenthash].[ext]",
+                        outputPath: "./assets/fonts/",
+                        esModule: false,
+                    }
+                }
             }
         ]
     },
@@ -56,5 +75,23 @@ module.exports = {
             filename: './[name].css'
         }),
         new CleanWebpackPlugin(),
-    ]
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "src", "assets/images"),
+                    to: "assets/images"
+                },
+                {
+                    from: path.resolve(__dirname, "src", "assets/icons"),
+                    to: "assets/icons"
+                },
+            ]
+        }),
+    ],
+    optimization: {
+        minimize: true,
+        minimizer:[
+            new TerserPlugin()
+        ]
+    }
 }

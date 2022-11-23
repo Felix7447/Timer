@@ -89,21 +89,10 @@
     font-size: 18px;
 }
 
-.pause-button button img, .stop-button button img {
-    width: 30px;
+.pause-button button img {
+    width: 24px;
 }
 
-/* @media (min-width: 820px) {
-    .buttons-container {
-        width: 60%;
-        height: 10%;
-    }
-
-    .start-button {
-        width: 60%;
-    }
-
-    .other-buttons-container {
-        width: 60%;
-    }
-} */
+.stop-button button img {
+    width: 36px;
+}
